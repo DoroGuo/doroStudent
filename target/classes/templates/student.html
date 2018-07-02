@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息</title>
+    <script type="text/javascript" src="jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(function(){
+                $.ajax({
+                    type: "get",
+                    url: "http://127.0.0.1:8090/getstudent",
+                    dataType: "json",
+                    success: function(data){
+                        $("#name").val(data.name);
+                        $("#age").val(data.age);
+                        $("#sex").val(data.sex);
+                        $("#high").val(data.high);
+                        data.forEach(function (stu) {
+                            $("#student").append("<tr><td>"+stu.id+"</td><td>"+stu.name+"</td><td>"+stu.password+"</td><td>"+stu.phone+"</td></tr>")
+                        })
+
+                    }
+                });
+
+        });
+
+    </script>
+</head>
+<body>
+
+<!--<div>
+ <td class="td">姓名:<input type="text" id="name" style="color: crimson"  class="input"></td><br/><br/>
+ <td class="td">年龄:<input type="text" id="age" style="color: crimson"  class="input"></td><br/><br/>
+ <td class="td">性别:<input type="text" id="sex"  style="color: crimson" class="input"></td><br/><br/>
+ <td class="td">身高:<input type="text" id="high" style="color: crimson" class="input"></td>
+</div>-->
+<table id="student">
+    <tr>
+        <td>
+            <input type ="text" id="id" /><br>
+        </td>
+        <td>
+            姓名
+        </td>
+        <td>
+        密码
+        </td>
+        <td>
+            电话
+        </td>
+    </tr>
+
+
+</table>
+</body>
+</html>
